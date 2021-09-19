@@ -6,7 +6,7 @@
 /*   By: gtrindad <gtrindad@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 19:23:37 by gtrindad          #+#    #+#             */
-/*   Updated: 2021/08/28 00:16:39 by gtrindad         ###   ########.fr       */
+/*   Updated: 2021/09/19 19:23:42 by gtrindad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	void	*ptr;
 
 	ptr = malloc(nmemb * size);
-	if (nmemb == 0 || size == 0)
+	if (!ptr)
 		return (0);
 	ft_bzero(ptr, size * nmemb);
 	return (ptr);

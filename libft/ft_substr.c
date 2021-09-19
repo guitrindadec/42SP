@@ -6,7 +6,7 @@
 /*   By: gtrindad <gtrindad@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 22:37:05 by gtrindad          #+#    #+#             */
-/*   Updated: 2021/09/19 15:51:42 by gtrindad         ###   ########.fr       */
+/*   Updated: 2021/09/19 16:47:08 by gtrindad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,3 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	substr[i] = '\0';
 	return (substr);
 }
-

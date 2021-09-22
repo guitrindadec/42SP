@@ -6,7 +6,7 @@
 /*   By: gtrindad <gtrindad@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 22:05:07 by gtrindad          #+#    #+#             */
-/*   Updated: 2021/09/19 15:48:48 by gtrindad         ###   ########.fr       */
+/*   Updated: 2021/09/21 23:22:16 by gtrindad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,17 @@ static int	num_len(int n)
 	return (len);
 }
 
+static int	check_min_limit(int n, char *str)
+{
+	if (n == -2147483648)
+	{
+		str[0] = '-';
+		str[1] = '2';
+		n = 147483648;
+	}
+	return (n);
+}
+
 char	*ft_itoa(int n)
 {
 	char	*str;
@@ -40,12 +51,9 @@ char	*ft_itoa(int n)
 
 	len = num_len(n);
 	str = (char *)malloc(sizeof(char) * (len + 1));
-	if (n == -2147483648)
-	{
-		str[0] = '-';
-		str[1] = '2';
-		n = 147483648;
-	}
+	if (!str)
+		return (NULL);
+	n = check_min_limit(n, str);
 	if (n < 0)
 	{
 		n *= -1;

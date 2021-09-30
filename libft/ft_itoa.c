@@ -6,65 +6,51 @@
 /*   By: gtrindad <gtrindad@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 22:05:07 by gtrindad          #+#    #+#             */
-/*   Updated: 2021/09/21 23:22:16 by gtrindad         ###   ########.fr       */
+/*   Updated: 2021/09/29 23:47:10 by gtrindad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	num_len(int n)
+static long int	num_len(int n)
 {
 	int	len;
 
-	len = 1;
-	if (n == -2147483648)
-		return (11);
-	if (n < 0)
+	len = 0;
+	if (n <= 0)
+		len = 1;
+	while (n != 0)
 	{
 		len++;
-		n *= -1;
-	}
-	while (n >= 10)
-	{
-		n /= 10;
-		len++;
+		n = n / 10;
 	}
 	return (len);
 }
 
-static int	check_min_limit(int n, char *str)
-{
-	if (n == -2147483648)
-	{
-		str[0] = '-';
-		str[1] = '2';
-		n = 147483648;
-	}
-	return (n);
-}
-
 char	*ft_itoa(int n)
 {
-	char	*str;
-	int		len;
-	int		i;
+	char			*str;
+	long int		len;
+	unsigned int	nbr;
 
 	len = num_len(n);
 	str = (char *)malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (NULL);
-	n = check_min_limit(n, str);
+	str[len--] = '\0';
+	if (n == 0)
+		str[0] = '0';
 	if (n < 0)
 	{
-		n *= -1;
+		nbr = n * -1;
 		str[0] = '-';
 	}
-	i = len - 1;
-	while (i >= 0 && str[i] != '-' && str[i] != '2')
+	else
+		nbr = n;
+	while (nbr > 0)
 	{
-		str[i--] = (char)(n % 10 + 48);
-		n = n / 10;
+		str[len--] = (nbr % 10) + '0';
+		nbr /= 10;
 	}
-	str[len] = '\0';
 	return (str);
 }
